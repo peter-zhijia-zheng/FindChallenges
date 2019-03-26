@@ -1,0 +1,12 @@
+package com.duolingo.challenges.data;
+
+import java.util.HashMap;
+import java.util.List;
+
+public class Challenge {
+    public String source_language;
+    public String word;
+    public HashMap<String, String> word_locations;
+    public String target_language;
+    public List<List<String>> character_grid;
+}
