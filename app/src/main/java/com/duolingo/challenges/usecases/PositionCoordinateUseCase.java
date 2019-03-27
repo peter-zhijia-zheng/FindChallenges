@@ -5,7 +5,13 @@ import com.duolingo.challenges.data.models.WordCoordinate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class PositionCoordinateUseCase  {
+    @Inject
+    public PositionCoordinateUseCase() {
+
+    }
 
     public WordCoordinate coordinateFromPosition(int gridSize, int position) {
         int x = position / gridSize;

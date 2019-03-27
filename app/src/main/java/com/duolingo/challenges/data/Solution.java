@@ -9,9 +9,7 @@ import java.util.List;
 public class Solution implements Parcelable {
     public List<Integer> positions;
 
-    public Solution(
-            List<Integer> positions
-    ) {
+    public Solution(List<Integer> positions) {
         this.positions = positions;
     }
 

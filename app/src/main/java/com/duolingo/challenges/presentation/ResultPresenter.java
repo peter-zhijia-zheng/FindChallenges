@@ -3,7 +3,13 @@ package com.duolingo.challenges.presentation;
 import com.duolingo.challenges.contract.ResultContract;
 import com.duolingo.challenges.mvp.ReactivePresenter;
 
+import javax.inject.Inject;
+
 public class ResultPresenter extends ReactivePresenter implements ResultContract.Presenter {
+    @Inject
+    public ResultPresenter() {
+        super();
+    }
 
     private ResultContract.View view;
 

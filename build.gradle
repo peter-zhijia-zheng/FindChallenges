@@ -5,6 +5,7 @@ buildscript {
     ext.butterKnifeVersion = "8.8.1"
     ext.daggerVersion = "2.11"
     ext.glassfishAnnotationVersion = "10.0-b28"
+    ext.materialProgressVersion = "1.4.1"
 
     repositories {
         google()

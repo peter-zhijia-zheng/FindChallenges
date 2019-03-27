@@ -5,8 +5,12 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import javax.inject.Inject;
+
 public class ConnectionUseCase {
     private Context context;
+
+    @Inject
     public ConnectionUseCase(Context context) {
         this.context = context;
     }

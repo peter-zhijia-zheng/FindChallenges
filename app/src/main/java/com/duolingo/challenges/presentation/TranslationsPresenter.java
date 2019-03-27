@@ -28,9 +28,9 @@ public class TranslationsPresenter extends ReactivePresenter implements Translat
     private WordCoordinate pivotCoordinate;
 
     private int pivotCharacterPosition = INVALID_FIRST_CHARACTER;
-    private int gridSize = translation.gridSize;
-    private ArrayList<Integer> lastPositionsSelection;
-    private ArrayList<Solution> solutions;
+    private int gridSize;
+    private List<Integer> lastPositionsSelection = new ArrayList<>();
+    private ArrayList<Solution> solutions = new ArrayList<>();
 
     private static final int INVALID_FIRST_CHARACTER = -1;
     private static final String KEY_SOLUTIONS = "KEY_SOLUTIONS";
@@ -45,6 +45,8 @@ public class TranslationsPresenter extends ReactivePresenter implements Translat
         this.coordinatesArray = coordinatesArray;
         this.coordinatesComparator = coordinatesComparator;
         this.flagsSelector = flagsSelector;
+
+        gridSize = translation.gridSize;
     }
 
     @Override
@@ -145,9 +147,9 @@ public class TranslationsPresenter extends ReactivePresenter implements Translat
         }
 
         ArrayList<List<Integer>> solutionsPositions = new ArrayList<>();
-        List allSolutionsCoordinates = translation.getAllSolutionsCoordinates();
-        int size = allSolutionsCoordinates.size;
-        for (int i = 0; i < size; i++){
+        List<List<WordCoordinate>> allSolutionsCoordinates = translation.getAllSolutionsCoordinates();
+        int size = allSolutionsCoordinates.size();
+        for (int i = 0; i < size; i++) {
             solutionsPositions.add(getPositionsFromCoordinates(allSolutionsCoordinates.get(i)));
         }
 
@@ -159,8 +161,8 @@ public class TranslationsPresenter extends ReactivePresenter implements Translat
 
         setSolutionItems();
 
-        int foundSolutions = solutions.size;
-        int expectedSolutions = translation.locations.size;
+        int foundSolutions = solutions.size();
+        int expectedSolutions = translation.locations.size();
         view.updateSolutionsRatio(foundSolutions, expectedSolutions);
         if (foundSolutions == expectedSolutions) {
             view.stopListeningTouchEvents();
@@ -169,17 +171,21 @@ public class TranslationsPresenter extends ReactivePresenter implements Translat
     }
 
     private Boolean isSolutionAlreadyFound() {
-        int size = solutions.size;
-        return (0 until size).any {
-            solutions[it].positions == lastPositionsSelection
+        for (Solution solution : solutions) {
+            if (solution.positions.equals(lastPositionsSelection)) {
+                return true;
+            }
         }
+        return false;
     }
 
     private Boolean isSolutionValid(List<List<Integer>> expectedSolutions) {
-        int size = expectedSolutions.size();
-        return (0 until size).any {
-            expectedSolutions[it] == lastPositionsSelection
+        for (List<Integer> expectedSolution : expectedSolutions) {
+            if (expectedSolution.equals(lastPositionsSelection)) {
+                return true;
+            }
         }
+        return false;
     }
 
     private void selectItemsInRow(WordCoordinate coordinate) {

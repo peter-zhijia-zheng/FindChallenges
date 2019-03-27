@@ -4,7 +4,14 @@ import android.support.annotation.DimenRes;
 
 import com.duolingo.challenges.R;
 
+import javax.inject.Inject;
+
 public class CharacterTextSizeUseCase {
+
+    @Inject
+    public CharacterTextSizeUseCase() {
+
+    }
 
     @DimenRes
     public Integer getTextSizeBasedOnGrid(Integer gridSize) {

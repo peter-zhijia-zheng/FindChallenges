@@ -2,16 +2,23 @@ package com.duolingo.challenges.usecases;
 
 import com.duolingo.challenges.data.models.WordCoordinate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class CoordinatesArrayUseCase {
+    @Inject
+    public CoordinatesArrayUseCase() {
+
+    }
 
     public List<WordCoordinate> calculateCoordinatesOnSameRow(
             WordCoordinate coordinateHead,
             WordCoordinate coordinateTail
     ) {
-        List<WordCoordinate> coordinateList = Arrays.asList(coordinateHead);
+        List<WordCoordinate> coordinateList = new ArrayList<>(Arrays.asList(coordinateHead));
         if (coordinateHead.x != coordinateTail.x) {
             return coordinateList;
         }
@@ -28,7 +35,7 @@ public class CoordinatesArrayUseCase {
             WordCoordinate coordinateHead,
             WordCoordinate coordinateTail
     ) {
-        List<WordCoordinate> coordinateList = Arrays.asList(coordinateHead);
+        List<WordCoordinate> coordinateList = new ArrayList<>(Arrays.asList(coordinateHead));
         if (coordinateHead.y != coordinateTail.y) {
             return coordinateList;
         }
@@ -45,7 +52,7 @@ public class CoordinatesArrayUseCase {
             WordCoordinate coordinateHead,
             WordCoordinate coordinateTail
     ) {
-        List<WordCoordinate> coordinateList = Arrays.asList(coordinateHead);
+        List<WordCoordinate> coordinateList = new ArrayList<>(Arrays.asList(coordinateHead));
         int indexX = coordinateHead.x + 1;
         int indexY = coordinateHead.y + 1;
         while (indexX <= coordinateTail.x && indexY <= coordinateTail.y) {

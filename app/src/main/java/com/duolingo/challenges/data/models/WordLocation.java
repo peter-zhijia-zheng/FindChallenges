@@ -6,8 +6,8 @@ import android.os.Parcelable;
 import java.util.List;
 
 public class WordLocation implements Parcelable {
-    private List<WordCoordinate> coordinates;
-    private String word;
+    public List<WordCoordinate> coordinates;
+    public String word;
 
     public WordLocation(List<WordCoordinate> coordinates, String word) {
         this.coordinates = coordinates;

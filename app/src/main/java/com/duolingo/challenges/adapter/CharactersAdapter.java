@@ -20,7 +20,7 @@ public class CharactersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private ScreenSizeUseCase screenSizeUseCase;
     private CharacterTextSizeUseCase characterTextUseCase;
 
-    private LayoutInflater layoutInflater = LayoutInflater.from(context);
+    private LayoutInflater layoutInflater;
     private List<String> characters = new ArrayList<>();
     private List<Integer> selectedItems = new ArrayList<>();
     private List<Integer> solutionItems = new ArrayList<>();
@@ -40,6 +40,7 @@ public class CharactersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     private void init() {
+        layoutInflater = LayoutInflater.from(context);
         int margin = context.getResources().getDimensionPixelSize(R.dimen.character_grid_margin);
         int width = screenSizeUseCase.getScreenWidth() - (margin * 2);
         cellSize = width / gridSize;

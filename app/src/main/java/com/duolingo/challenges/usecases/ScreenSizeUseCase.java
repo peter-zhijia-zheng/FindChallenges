@@ -6,9 +6,12 @@ import android.graphics.Point;
 import android.view.Display;
 import android.view.WindowManager;
 
+import javax.inject.Inject;
+
 public class ScreenSizeUseCase {
     private Context context;
 
+    @Inject
     public ScreenSizeUseCase(Context context) {
         this.context = context;
     }

@@ -7,6 +7,8 @@ import com.duolingo.challenges.mvp.ReactivePresenter;
 import com.duolingo.challenges.usecases.ConnectionUseCase;
 import com.duolingo.challenges.usecases.FetchTranslationsUseCase;
 
+import javax.inject.Inject;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -15,6 +17,7 @@ public class InstructionsPresenter extends ReactivePresenter implements Instruct
     private FetchTranslationsUseCase fetchTranslationsUseCase;
     private ConnectionUseCase connectionUseCase;
 
+    @Inject
     public InstructionsPresenter(TranslationsStore translationsStore,
                                  FetchTranslationsUseCase fetchTranslationsUseCase,
                                  ConnectionUseCase connectionUseCase) {

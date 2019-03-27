@@ -9,6 +9,8 @@ import com.duolingo.challenges.data.local.TranslationsStore;
 import com.duolingo.challenges.data.models.Translation;
 import com.duolingo.challenges.mvp.ReactivePresenter;
 
+import javax.inject.Inject;
+
 public class MainPresenter extends ReactivePresenter implements MainContract.Presenter {
     public static final String KEY_TRANSLATION_INDEX = "KEY_TRANSLATION_INDEX";
     public static final int DEFAULT_PROGRESS_MAX_VALUE = 1;
@@ -20,6 +22,7 @@ public class MainPresenter extends ReactivePresenter implements MainContract.Pre
 
     public int translationIndex = DEFAULT_INDEX;
 
+    @Inject
     public MainPresenter(TranslationsStore translationsStore) {
         this.translationsStore = translationsStore;
     }
