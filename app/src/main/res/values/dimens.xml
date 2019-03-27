@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="character_grid_margin">@dimen/two_grid_unit</dimen>
+
+</resources>

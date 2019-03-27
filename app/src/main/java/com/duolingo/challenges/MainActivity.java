@@ -2,33 +2,38 @@ package com.duolingo.challenges;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.duolingo.challenges.data.Challenge;
+import com.duolingo.challenges.data.models.Translation;
 import com.duolingo.challenges.service.ChallengeService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.reflect.TypeToken;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Completable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
+    private TextView tvWord;
+    private RecyclerView rvList;
 
-    private List<Challenge> mChallenges;
+    private List<Translation> mChallenges = new ArrayList<>();
     private int mCurrentChallenge;
+    private static final String BREAK_LINE = "\n";
 
     private Retrofit mRetrofit = new Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))//解析方法
-            .baseUrl("https://s3.amazonaws.com/duolingo-data/s3/js2/")
+            .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .baseUrl("https://s3.amazonaws.com/")
             .client(new OkHttpClient.Builder().build())
             .build();
 
@@ -40,32 +45,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
+//        tvWord = findViewById(R.id.tv_word);
+//        rvList = findViewById(R.id.rv_list);
+
         ChallengeService service = mRetrofit.create(ChallengeService.class);
-        Call<JsonElement> call = service.getChallenges();
-        call.enqueue(new Callback<JsonElement>() {
-            @Override
-            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                JsonElement body = response.body();
-                if (body != null) {
-                    mChallenges = new Gson().fromJson(body.isJsonArray() ? body.toString() : ("[" + body.toString() + "]"),
-                            new TypeToken<List<Challenge>>() {
-                            }.getType());
-                    showChallenge();
+        service.getChallenges()
+        .flatMapCompletable(it ->
+            Completable.fromAction(() -> {
+                Log.d("zheng", "it: " + new Gson().toJson(it));
+                String responseBodyString = it.string();
+                String[] lines = responseBodyString.split(BREAK_LINE);
+                for (String line : lines) {
+                    mChallenges.add(new Gson().fromJson(line, Translation.class));
                 }
-                Log.d("zheng", "response:" + new Gson().toJson(mChallenges));
-            }
-
-            @Override
-            public void onFailure(Call<JsonElement> call, Throwable t) {
-                t.printStackTrace();
-                Log.d("zheng", "exception:" + t.getMessage());
-            }
-        });
-    }
-
-    private void showChallenge() {
-        Challenge challenge = mChallenges.get(mCurrentChallenge);
-        tvWord.setText(challenge.word);
-
+                Log.d("zheng", "challenges: " + new Gson().toJson(mChallenges));
+            })
+        )
+        .subscribeOn(Schedulers.newThread())
+        .observeOn(AndroidSchedulers.mainThread()).subscribe();
     }
 }

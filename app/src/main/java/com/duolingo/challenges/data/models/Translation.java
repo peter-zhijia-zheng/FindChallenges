@@ -1,9 +1,9 @@
-package com.duolingo.challenges.data;
+package com.duolingo.challenges.data.models;
 
 import java.util.HashMap;
 import java.util.List;
 
-public class Challenge {
+public class Translation {
     public String source_language;
     public String word;
     public HashMap<String, String> word_locations;

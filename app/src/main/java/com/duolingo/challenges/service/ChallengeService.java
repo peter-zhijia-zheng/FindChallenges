@@ -1,11 +1,12 @@
 package com.duolingo.challenges.service;
 
-import com.google.gson.JsonElement;
-
-import retrofit2.Call;
+import io.reactivex.Observable;
+import okhttp3.ResponseBody;
 import retrofit2.http.GET;
+import retrofit2.http.Streaming;
 
 public interface ChallengeService {
-    @GET("find_challenges.txt")
-    Call<JsonElement> getChallenges();
+    @Streaming
+    @GET("duolingo-data/s3/js2/find_challenges.txt")
+    Observable<ResponseBody> getChallenges();
 }

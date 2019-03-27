@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">FindChallenges</string>
+
+    <string name="app_name">Words Puzzle</string>
+
+    <string name="btn_action_continue">Continue</string>
+    <string name="btn_action_next">Next</string>
+    <string name="btn_action_restart">Restart</string>
+    <string name="btn_action_finish">Finish</string>
+
+    <string name="instruction_title">Instructions</string>
+    <string name="instruction_description1">Your task is to find all the translations of a word in the grid.</string>
+    <string name="instruction_description2">You can select a word by pressing down on a letter in the grid, dragging to another one, and then releasing your finger. If the selected word is a valid translation, it will be highlighted. When all the translations will be found, you will see a new grid.</string>
+    <string name="instruction_description3">Translations in the grid will only ever appear horizontally (left to right), vertically (top to bottom) or diagonally (left to right, top to bottom).</string>
+    <string name="instruction_check_connection">Please check your internet connection</string>
+    <string name="instruction_error_while_fetching">We are experiencing issue while fetching translations, please retry later</string>
+
+    <string name="result_title">Congratulation</string>
+    <string name="result_description">Your completed all the translations. What do you want to do now?</string>
+
 </resources>
