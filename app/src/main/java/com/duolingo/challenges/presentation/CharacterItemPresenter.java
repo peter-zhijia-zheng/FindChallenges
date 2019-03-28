@@ -11,7 +11,7 @@ public class CharacterItemPresenter extends ReactivePresenter implements Charact
 
     private CharacterItemContract.View view;
 
-    private int gridSize;
+    private final int gridSize;
     private CharacterTextSizeUseCase characterTextSizeUseCase;
 
     public CharacterItemPresenter(int gridSize, CharacterTextSizeUseCase characterTextSizeUseCase) {

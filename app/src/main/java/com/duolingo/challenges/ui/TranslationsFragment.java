@@ -217,7 +217,7 @@ public class TranslationsFragment extends BaseFragment implements
     }
 
     interface FragmentContainer {
-        public void onGridCompleted();
+        void onGridCompleted();
     }
 
 }

@@ -3,14 +3,14 @@ package com.duolingo.challenges.contract;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 
-import com.duolingo.challenges.common.AnimationType;
+import com.duolingo.challenges.common.extention.AnimationType;
 import com.duolingo.challenges.data.models.Translation;
 import com.duolingo.challenges.mvp.BasePresenter;
 import com.duolingo.challenges.mvp.BaseView;
 
 public interface MainContract {
 
-    public interface Presenter extends BasePresenter<View> {
+    interface Presenter extends BasePresenter<View> {
 
         void start(Bundle savedInstanceState);
 

@@ -8,7 +8,6 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -59,9 +58,8 @@ public class TranslationParser {
         String key;
         String value;
         List<WordCoordinate> wordCoordinates;
-        Iterator<String> iterator = wordLocations.keySet().iterator();
-        while (iterator.hasNext()) {
-            key = iterator.next();
+        for (String s : wordLocations.keySet()) {
+            key = s;
             value = wordLocations.get(key);
             String[] coordinates = key.split(COMMA);
             wordCoordinates = new ArrayList<>();

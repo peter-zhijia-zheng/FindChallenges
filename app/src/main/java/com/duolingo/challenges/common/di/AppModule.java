@@ -3,6 +3,9 @@ package com.duolingo.challenges.common.di;
 import android.app.Application;
 import android.content.Context;
 
+import com.duolingo.challenges.common.schedulers.RealSchedulerProvider;
+import com.duolingo.challenges.common.schedulers.SchedulerProvider;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -12,15 +15,13 @@ public class AppModule {
 
     @Provides
     @ApplicationScope
-    public Context provideContext(
-            Application application
-    ) {
+    public Context provideContext(Application application) {
         return application.getApplicationContext();
     }
 
-//    @Provides @ApplicationScope
-//    public SchedulerProvider provideSchedulerProvider(
-//    ) {
-//        return new RealSchedulerProvider();
-//    }
+    @Provides
+    @ApplicationScope
+    public SchedulerProvider provideSchedulerProvider() {
+        return new RealSchedulerProvider();
+    }
 }

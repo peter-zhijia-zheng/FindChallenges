@@ -1,4 +1,4 @@
-package com.duolingo.challenges.common;
+package com.duolingo.challenges.common.extention;
 
 public enum AnimationType {
     NONE,

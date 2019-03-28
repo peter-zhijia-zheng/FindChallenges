@@ -4,13 +4,13 @@ import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.duolingo.challenges.R;
-import com.duolingo.challenges.common.AnimationType;
+import com.duolingo.challenges.common.extention.AnimationType;
+import com.duolingo.challenges.common.extention.FragmentManagerExtensions;
 import com.duolingo.challenges.contract.MainContract;
 import com.duolingo.challenges.data.models.Translation;
 import com.duolingo.challenges.presentation.MainPresenter;
@@ -34,6 +34,9 @@ public class MainActivity extends BaseActivity implements
 
     @Inject
     MainPresenter presenter;
+
+    @Inject
+    FragmentManagerExtensions fragmentManagerExtensions;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -121,30 +124,36 @@ public class MainActivity extends BaseActivity implements
         presenter.onFinishRequested();
     }
 
+//    private void showFragment(Fragment fragment, AnimationType animationType) {
+//        replaceWithoutBackStack(R.id.fragment_container, fragment, animationType);
+//    }
+
     private void showFragment(Fragment fragment, AnimationType animationType) {
-        replaceWithoutBackStack(R.id.fragment_container, fragment, animationType);
+        fragmentManagerExtensions.replaceWithoutBackStack(getSupportFragmentManager(),
+                R.id.fragment_container, fragment, animationType);
     }
 
-    private void replaceWithoutBackStack(int layoutId,
-                                         Fragment fragment,
-                                         AnimationType animationType) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        if (animationType == AnimationType.SLIDE) {
-            transaction.setCustomAnimations(
-                    R.anim.open_from_right,
-                    R.anim.close_to_left,
-                    R.anim.open_from_left,
-                    R.anim.close_to_right);
-        } else if (animationType == AnimationType.FADE) {
-            transaction.setCustomAnimations(
-                    android.R.anim.fade_in,
-                    android.R.anim.fade_out,
-                    android.R.anim.fade_in,
-                    android.R.anim.fade_out);
-        }
-
-        transaction.replace(layoutId, fragment);
-        transaction.commit();
-    }
+//    private void replaceWithoutBackStack(int layoutId,
+//                                         Fragment fragment,
+//                                         AnimationType animationType) {
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//
+//        if (animationType == AnimationType.SLIDE) {
+//            transaction.setCustomAnimations(
+//                    R.anim.open_from_right,
+//                    R.anim.close_to_left,
+//                    R.anim.open_from_left,
+//                    R.anim.close_to_right);
+//        } else if (animationType == AnimationType.FADE) {
+//            transaction.setCustomAnimations(
+//                    android.R.anim.fade_in,
+//                    android.R.anim.fade_out,
+//                    android.R.anim.fade_in,
+//                    android.R.anim.fade_out);
+//        }
+//
+//        transaction.replace(layoutId, fragment);
+//        transaction.commit();
+//    }
 }

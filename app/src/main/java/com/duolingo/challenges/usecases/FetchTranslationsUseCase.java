@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import io.reactivex.Completable;
 
 public class FetchTranslationsUseCase {
-    private static final String BREAK_LINE = "\n";
+    public static final String BREAK_LINE = "\n";
 
     private RemoteDataSource remoteDataSource;
     private TranslationsStore translationsStore;

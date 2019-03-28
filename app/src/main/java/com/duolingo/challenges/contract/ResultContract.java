@@ -5,23 +5,19 @@ import com.duolingo.challenges.mvp.BaseView;
 
 public interface ResultContract {
 
-    interface Presenter extends BasePresenter<View>
+    interface Presenter extends BasePresenter<View> {
 
-    {
+        void onFinishClicked();
 
-        public void onFinishClicked();
-
-        public void onRestartClicked();
+        void onRestartClicked();
 
     }
 
-    interface View extends BaseView
+    interface View extends BaseView {
 
-    {
+        void onRestartRequested();
 
-        public void onRestartRequested();
-
-        public void onFinishRequested();
+        void onFinishRequested();
 
     }
 
