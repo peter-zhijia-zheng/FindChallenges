@@ -1,17 +1,18 @@
 package com.duolingo.challenges.presentation;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.duolingo.challenges.contract.TranslationsContract;
 import com.duolingo.challenges.data.Solution;
 import com.duolingo.challenges.data.models.Translation;
 import com.duolingo.challenges.data.models.WordCoordinate;
-import com.duolingo.challenges.mvp.ReactivePresenter;
 import com.duolingo.challenges.usecases.CoordinatesArrayUseCase;
 import com.duolingo.challenges.usecases.CoordinatesComparatorUseCase;
 import com.duolingo.challenges.usecases.FlagSelectorUseCase;
 import com.duolingo.challenges.usecases.PositionCoordinateUseCase;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -82,6 +83,7 @@ public class TranslationsPresenter extends ReactivePresenter implements Translat
 
     @Override
     public void onCharacterTouched(int position, int eventAction) {
+        Log.d("zheng", "onCharacterTouched position:" + position + " eventAction:" + eventAction);
         if (eventAction == MotionEvent.ACTION_UP) {
             verifySolutions();
             clearSelection();
@@ -96,9 +98,11 @@ public class TranslationsPresenter extends ReactivePresenter implements Translat
         if (eventAction == MotionEvent.ACTION_DOWN && isPositionInvalid()) {
             pivotCharacterPosition = position;
             pivotCoordinate = getCoordinatesFromPosition(position);
+            Log.d("zheng", "onCharacterTouched pivotCharacterPosition:" + pivotCharacterPosition);
         }
 
         if (position == pivotCharacterPosition) {
+            Log.d("zheng", "position == pivotCharacterPosition:" + pivotCharacterPosition);
             setSelectedItems(Arrays.asList(pivotCharacterPosition));
             return;
         }
@@ -108,15 +112,17 @@ public class TranslationsPresenter extends ReactivePresenter implements Translat
     }
 
     private void calculateSelectedCharacters(WordCoordinate coordinate) {
-        if (coordinatesComparator.isCoordinateAbovePivot(pivotCoordinate, coordinate)) {
-            setSelectedItems(Arrays.asList(pivotCharacterPosition));
-            return;
-        }
-
-        if (coordinatesComparator.isCoordinateLeftOfPivot(pivotCoordinate, coordinate)) {
-            setSelectedItems(Arrays.asList(pivotCharacterPosition));
-            return;
-        }
+        Log.d("zheng", "calculateSelectedCharacters coordinate:" + new Gson().toJson(coordinate)
+                + " pivotCoordinate:" + new Gson().toJson(pivotCoordinate));
+//        if (coordinatesComparator.isCoordinateAbovePivot(pivotCoordinate, coordinate)) {
+//            setSelectedItems(Arrays.asList(pivotCharacterPosition));
+//            return;
+//        }
+//
+//        if (coordinatesComparator.isCoordinateLeftOfPivot(pivotCoordinate, coordinate)) {
+//            setSelectedItems(Arrays.asList(pivotCharacterPosition));
+//            return;
+//        }
 
         if (coordinatesComparator.isCoordinateRightOfPivotOnSameRow(pivotCoordinate, coordinate)) {
             selectItemsInRow(coordinate);

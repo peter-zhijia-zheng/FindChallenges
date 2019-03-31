@@ -23,11 +23,12 @@ public class CoordinatesArrayUseCase {
             return coordinateList;
         }
 
-        int indexY = coordinateHead.y + 1;
-        while (indexY <= coordinateTail.y) {
+        int offset = coordinateHead.y > coordinateTail.y ? -1 : 1;
+        int indexY = coordinateHead.y;
+        do {
+            indexY += offset;
             coordinateList.add(new WordCoordinate(coordinateHead.x, indexY));
-            indexY++;
-        }
+        } while (indexY != coordinateTail.y);
         return coordinateList;
     }
 
@@ -40,11 +41,12 @@ public class CoordinatesArrayUseCase {
             return coordinateList;
         }
 
-        int indexX = coordinateHead.x + 1;
-        while (indexX <= coordinateTail.x) {
+        int offset = coordinateHead.x > coordinateTail.x ? -1 : 1;
+        int indexX = coordinateHead.x;
+        do {
+            indexX += offset;
             coordinateList.add(new WordCoordinate(indexX, coordinateHead.y));
-            indexX++;
-        }
+        } while (indexX != coordinateTail.x);
         return coordinateList;
     }
 
@@ -52,14 +54,16 @@ public class CoordinatesArrayUseCase {
             WordCoordinate coordinateHead,
             WordCoordinate coordinateTail
     ) {
+        int offsetX = coordinateHead.x > coordinateTail.x ? -1 : 1;
+        int offsetY = coordinateHead.y > coordinateTail.y ? -1 : 1;
         List<WordCoordinate> coordinateList = new ArrayList<>(Arrays.asList(coordinateHead));
-        int indexX = coordinateHead.x + 1;
-        int indexY = coordinateHead.y + 1;
-        while (indexX <= coordinateTail.x && indexY <= coordinateTail.y) {
+        int indexX = coordinateHead.x;
+        int indexY = coordinateHead.y;
+        do {
+            indexX += offsetX;
+            indexY += offsetY;
             coordinateList.add(new WordCoordinate(indexX, indexY));
-            indexX++;
-            indexY++;
-        }
+        } while (indexX != coordinateTail.x && indexY != coordinateTail.y);
         return coordinateList;
     }
 
