@@ -2,7 +2,6 @@ package com.duolingo.challenges.presentation;
 
 import com.duolingo.challenges.R;
 import com.duolingo.challenges.contract.CharacterItemContract;
-import com.duolingo.challenges.mvp.ReactivePresenter;
 import com.duolingo.challenges.usecases.CharacterTextSizeUseCase;
 
 import java.util.List;

@@ -3,8 +3,7 @@ package com.duolingo.challenges.contract;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 
-import com.duolingo.challenges.mvp.BasePresenter;
-import com.duolingo.challenges.mvp.BaseView;
+import com.duolingo.challenges.presentation.BasePresenter;
 
 import java.util.List;
 

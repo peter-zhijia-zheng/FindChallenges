@@ -1,7 +1,6 @@
 package com.duolingo.challenges.presentation;
 
 import com.duolingo.challenges.contract.ResultContract;
-import com.duolingo.challenges.mvp.ReactivePresenter;
 
 import javax.inject.Inject;
 

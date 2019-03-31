@@ -4,7 +4,6 @@ import com.duolingo.challenges.R;
 import com.duolingo.challenges.common.schedulers.SchedulerProvider;
 import com.duolingo.challenges.contract.InstructionsContract;
 import com.duolingo.challenges.data.local.TranslationsStore;
-import com.duolingo.challenges.mvp.ReactivePresenter;
 import com.duolingo.challenges.usecases.ConnectionUseCase;
 import com.duolingo.challenges.usecases.FetchTranslationsUseCase;
 

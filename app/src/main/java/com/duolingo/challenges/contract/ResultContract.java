@@ -1,7 +1,6 @@
 package com.duolingo.challenges.contract;
 
-import com.duolingo.challenges.mvp.BasePresenter;
-import com.duolingo.challenges.mvp.BaseView;
+import com.duolingo.challenges.presentation.BasePresenter;
 
 public interface ResultContract {
 

@@ -1,4 +1,4 @@
-package com.duolingo.challenges.mvp;
+package com.duolingo.challenges.presentation;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;

@@ -7,7 +7,6 @@ import com.duolingo.challenges.R;
 import com.duolingo.challenges.common.extention.AnimationType;
 import com.duolingo.challenges.data.local.TranslationsStore;
 import com.duolingo.challenges.data.models.Translation;
-import com.duolingo.challenges.mvp.ReactivePresenter;
 
 import javax.inject.Inject;
 

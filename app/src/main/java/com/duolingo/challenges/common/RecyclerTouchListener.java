@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
 
-
 public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
     private static final int INVALID_POSITION = -1;
     private Rect rect;
