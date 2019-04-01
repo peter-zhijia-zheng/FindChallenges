@@ -4,7 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class WordCoordinate implements Parcelable {
-    public int x, y;
+    public static final Parcelable.Creator<WordCoordinate> CREATOR = new Parcelable.Creator<WordCoordinate>() {
+        @Override
+        public WordCoordinate createFromParcel(Parcel source) {
+            return new WordCoordinate(source);
+        }
+
+        @Override
+        public WordCoordinate[] newArray(int size) {
+            return new WordCoordinate[size];
+        }
+    };
+    public final int x, y;
 
     public WordCoordinate(int x, int y) {
         this.x = x;
@@ -25,16 +36,4 @@ public class WordCoordinate implements Parcelable {
         dest.writeInt(x);
         dest.writeInt(y);
     }
-
-    public static final Parcelable.Creator<WordCoordinate> CREATOR = new Parcelable.Creator<WordCoordinate>() {
-        @Override
-        public WordCoordinate createFromParcel(Parcel source) {
-            return new WordCoordinate(source);
-        }
-
-        @Override
-        public WordCoordinate[] newArray(int size) {
-            return new WordCoordinate[size];
-        }
-    };
 }

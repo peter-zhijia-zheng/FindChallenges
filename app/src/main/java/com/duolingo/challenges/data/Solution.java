@@ -7,13 +7,24 @@ import android.os.Parcelable;
 import java.util.List;
 
 public class Solution implements Parcelable {
+    public static final Parcelable.Creator<Solution> CREATOR = new Parcelable.Creator<Solution>() {
+        @Override
+        public Solution createFromParcel(Parcel source) {
+            return new Solution(source);
+        }
+
+        @Override
+        public Solution[] newArray(int size) {
+            return new Solution[size];
+        }
+    };
     public List<Integer> positions;
 
     public Solution(List<Integer> positions) {
         this.positions = positions;
     }
 
-    public Solution(Parcel source) {
+    private Solution(Parcel source) {
         source.readList(positions, Integer.class.getClassLoader());
     }
 
@@ -26,16 +37,4 @@ public class Solution implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeList(positions);
     }
-
-    public static final Parcelable.Creator<Solution> CREATOR = new Parcelable.Creator<Solution>() {
-        @Override
-        public Solution createFromParcel(Parcel source) {
-            return new Solution(source);
-        }
-
-        @Override
-        public Solution[] newArray(int size) {
-            return new Solution[size];
-        }
-    };
 }

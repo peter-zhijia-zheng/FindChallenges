@@ -21,22 +21,23 @@ public class InstructionsPresenterTest {
 
     @Mock
     private TranslationsStore translationsStore;
-    @Mock private FetchTranslationsUseCase fetchTranslationsUseCase;
-    @Mock private ConnectionUseCase connectionUseCase;
-    @Mock private InstructionsContract.View view;
+    @Mock
+    private FetchTranslationsUseCase fetchTranslationsUseCase;
+    @Mock
+    private ConnectionUseCase connectionUseCase;
+    @Mock
+    private InstructionsContract.View view;
 
-    private SchedulerProviderTest schedulerProvider;
     private InstructionsPresenter presenter;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        schedulerProvider = new SchedulerProviderTest();
         presenter = new InstructionsPresenter(
                 translationsStore,
                 fetchTranslationsUseCase,
                 connectionUseCase,
-                schedulerProvider);
+                new SchedulerProviderTest());
         presenter.setView(view);
     }
 

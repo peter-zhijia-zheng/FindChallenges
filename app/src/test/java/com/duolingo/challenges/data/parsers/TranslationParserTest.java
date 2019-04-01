@@ -31,7 +31,7 @@ public class TranslationParserTest {
             "\"word_locations\": {\"0,1\": " + LOCATION_WORD + "}, " +
             "\"target_language\": " + TARGET_LANGUAGE +
             "}\n";
-    
+
     private TranslationParser parser;
 
     @Before

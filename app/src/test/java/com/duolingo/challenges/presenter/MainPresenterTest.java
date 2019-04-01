@@ -26,9 +26,12 @@ public class MainPresenterTest {
 
     @Mock
     private TranslationsStore translationsStore;
-    @Mock private MainContract.View view;
-    @Mock private Bundle savedInstanceState;
-    @Mock private Translation translation;
+    @Mock
+    private MainContract.View view;
+    @Mock
+    private Bundle savedInstanceState;
+    @Mock
+    private Translation translation;
 
     private MainPresenter presenter;
 

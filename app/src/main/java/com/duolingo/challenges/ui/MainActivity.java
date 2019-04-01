@@ -21,7 +21,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
 public class MainActivity extends BaseActivity implements
         MainContract.View,
         InstructionsFragment.FragmentContainer,
@@ -124,36 +123,8 @@ public class MainActivity extends BaseActivity implements
         presenter.onFinishRequested();
     }
 
-//    private void showFragment(Fragment fragment, AnimationType animationType) {
-//        replaceWithoutBackStack(R.id.fragment_container, fragment, animationType);
-//    }
-
     private void showFragment(Fragment fragment, AnimationType animationType) {
         fragmentManagerExtensions.replaceWithoutBackStack(getSupportFragmentManager(),
                 R.id.fragment_container, fragment, animationType);
     }
-
-
-//    private void replaceWithoutBackStack(int layoutId,
-//                                         Fragment fragment,
-//                                         AnimationType animationType) {
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//
-//        if (animationType == AnimationType.SLIDE) {
-//            transaction.setCustomAnimations(
-//                    R.anim.open_from_right,
-//                    R.anim.close_to_left,
-//                    R.anim.open_from_left,
-//                    R.anim.close_to_right);
-//        } else if (animationType == AnimationType.FADE) {
-//            transaction.setCustomAnimations(
-//                    android.R.anim.fade_in,
-//                    android.R.anim.fade_out,
-//                    android.R.anim.fade_in,
-//                    android.R.anim.fade_out);
-//        }
-//
-//        transaction.replace(layoutId, fragment);
-//        transaction.commit();
-//    }
 }

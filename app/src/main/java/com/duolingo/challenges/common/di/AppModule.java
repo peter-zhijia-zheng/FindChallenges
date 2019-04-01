@@ -11,7 +11,7 @@ import dagger.Provides;
 
 /* Module that contains generic android dependencies. */
 @Module
-public class AppModule {
+class AppModule {
 
     @Provides
     @ApplicationScope

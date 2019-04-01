@@ -15,10 +15,12 @@ import static org.mockito.Mockito.when;
 
 public class ConnectionUseCaseTest {
 
-    @Mock private Context context;
+    @Mock
+    private Context context;
     @Mock
     private ConnectivityManager manager;
-    @Mock private NetworkInfo networkInfo;
+    @Mock
+    private NetworkInfo networkInfo;
 
     private ConnectionUseCase useCase;
 

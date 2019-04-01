@@ -12,9 +12,9 @@ import io.reactivex.Completable;
 public class FetchTranslationsUseCase {
     public static final String BREAK_LINE = "\n";
 
-    private RemoteDataSource remoteDataSource;
-    private TranslationsStore translationsStore;
-    private TranslationParser translationParser;
+    private final RemoteDataSource remoteDataSource;
+    private final TranslationsStore translationsStore;
+    private final TranslationParser translationParser;
 
     @Inject
     public FetchTranslationsUseCase(

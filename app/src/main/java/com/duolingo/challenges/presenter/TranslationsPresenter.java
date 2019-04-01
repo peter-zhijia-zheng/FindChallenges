@@ -13,27 +13,23 @@ import com.duolingo.challenges.usecases.FlagSelectorUseCase;
 import com.duolingo.challenges.usecases.PositionCoordinateUseCase;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class TranslationsPresenter extends ReactivePresenter implements TranslationsContract.Presenter {
-    private Translation translation;
-    private PositionCoordinateUseCase positionCoordinate;
-    private CoordinatesArrayUseCase coordinatesArray;
-    private CoordinatesComparatorUseCase coordinatesComparator;
-    private FlagSelectorUseCase flagsSelector;
-
-    private TranslationsContract.View view;
-    private WordCoordinate pivotCoordinate;
-
-    private int pivotCharacterPosition = INVALID_FIRST_CHARACTER;
-    private int gridSize;
-    private List<Integer> lastPositionsSelection = new ArrayList<>();
-    private ArrayList<Solution> solutions = new ArrayList<>();
-
     private static final int INVALID_FIRST_CHARACTER = -1;
     private static final String KEY_SOLUTIONS = "KEY_SOLUTIONS";
+    private final Translation translation;
+    private final PositionCoordinateUseCase positionCoordinate;
+    private final CoordinatesArrayUseCase coordinatesArray;
+    private final CoordinatesComparatorUseCase coordinatesComparator;
+    private final FlagSelectorUseCase flagsSelector;
+    private TranslationsContract.View view;
+    private WordCoordinate pivotCoordinate;
+    private int pivotCharacterPosition = INVALID_FIRST_CHARACTER;
+    private final int gridSize;
+    private final List<Integer> lastPositionsSelection = new ArrayList<>();
+    private ArrayList<Solution> solutions = new ArrayList<>();
 
     public TranslationsPresenter(Translation translation,
                                  PositionCoordinateUseCase positionCoordinate,
@@ -104,7 +100,9 @@ public class TranslationsPresenter extends ReactivePresenter implements Translat
         pivotCharacterPosition = getPositionFromCoordinates(pivotCoordinate);
         if (position == pivotCharacterPosition) {
 //            Log.d("zheng", "position == pivotCharacterPosition:" + pivotCharacterPosition);
-            setSelectedItems(Arrays.asList(pivotCharacterPosition));
+            List<Integer> positions = new ArrayList<>();
+            positions.add(pivotCharacterPosition);
+            setSelectedItems(positions);
             return;
         }
 
@@ -155,8 +153,7 @@ public class TranslationsPresenter extends ReactivePresenter implements Translat
         }
 
         if (isSolutionValid(solutionsPositions)) {
-            ArrayList<Integer> solutionList = new ArrayList<>();
-            solutionList.addAll(lastPositionsSelection);
+            ArrayList<Integer> solutionList = new ArrayList<>(lastPositionsSelection);
             solutions.add(new Solution(solutionList));
         }
 

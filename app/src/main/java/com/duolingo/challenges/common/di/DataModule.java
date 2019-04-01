@@ -8,7 +8,7 @@ import dagger.Provides;
 
 /* Module that contains dependencies to access local data. */
 @Module
-public class DataModule {
+class DataModule {
 
     @Provides
     @ApplicationScope

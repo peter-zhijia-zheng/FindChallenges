@@ -7,6 +7,16 @@ buildscript {
     ext.glassfishAnnotationVersion = "10.0-b28"
     ext.materialProgressVersion = "1.4.1"
 
+    // Network
+    ext.retrofitVersion = "2.3.0"
+    ext.okhttpVersion = "3.8.1"
+    ext.rxJava2Adapter = "2.3.0"
+
+    // RxJava
+    ext.rxJavaVersion = "2.1.2"
+    ext.rxAndroidVersion = "2.0.2"
+    ext.rxLintVersion = "1.4"
+
     // Test
     ext.junitVersion = "4.12"
     ext.assertjVersion = "3.8.0"

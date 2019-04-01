@@ -10,10 +10,11 @@ import com.duolingo.challenges.usecases.FetchTranslationsUseCase;
 import javax.inject.Inject;
 
 public class InstructionsPresenter extends ReactivePresenter implements InstructionsContract.Presenter {
-    private TranslationsStore translationsStore;
-    private FetchTranslationsUseCase fetchTranslationsUseCase;
-    private ConnectionUseCase connectionUseCase;
-    private SchedulerProvider schedulerProvider;
+    private final TranslationsStore translationsStore;
+    private final FetchTranslationsUseCase fetchTranslationsUseCase;
+    private final ConnectionUseCase connectionUseCase;
+    private final SchedulerProvider schedulerProvider;
+    private InstructionsContract.View view;
 
     @Inject
     public InstructionsPresenter(TranslationsStore translationsStore,
@@ -25,8 +26,6 @@ public class InstructionsPresenter extends ReactivePresenter implements Instruct
         this.connectionUseCase = connectionUseCase;
         this.schedulerProvider = schedulerProvider;
     }
-
-    private InstructionsContract.View view;
 
     @Override
     public void setView(InstructionsContract.View view) {

@@ -6,8 +6,19 @@ import android.os.Parcelable;
 import java.util.List;
 
 public class WordLocation implements Parcelable {
+    public static final Parcelable.Creator<WordLocation> CREATOR = new Parcelable.Creator<WordLocation>() {
+        @Override
+        public WordLocation createFromParcel(Parcel source) {
+            return new WordLocation(source);
+        }
+
+        @Override
+        public WordLocation[] newArray(int size) {
+            return new WordLocation[size];
+        }
+    };
     public List<WordCoordinate> coordinates;
-    public String word;
+    public final String word;
 
     public WordLocation(List<WordCoordinate> coordinates, String word) {
         this.coordinates = coordinates;
@@ -29,16 +40,4 @@ public class WordLocation implements Parcelable {
         dest.writeList(coordinates);
         dest.writeString(word);
     }
-
-    public static final Parcelable.Creator<WordLocation> CREATOR = new Parcelable.Creator<WordLocation>() {
-        @Override
-        public WordLocation createFromParcel(Parcel source) {
-            return new WordLocation(source);
-        }
-
-        @Override
-        public WordLocation[] newArray(int size) {
-            return new WordLocation[size];
-        }
-    };
 }

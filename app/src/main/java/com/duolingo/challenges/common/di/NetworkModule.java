@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /* Module that contains network dependencies. */
 @Module
-public class NetworkModule {
+class NetworkModule {
 
     @Provides
     @ApplicationScope

@@ -23,22 +23,27 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 
 public class TranslationsPresenterTest {
-    private static final int SOURCE_FLAG_RES = 1;
-    private static final String SOURCE_LANGUAGE = "source";
-    private static final int TARGET_FLAG_RES = 2;
-    private static final String TARGET_LANGUAGE = "target";
     private static final int POSITION = 0;
-            
-    @Mock private Translation translation;
-    @Mock private PositionCoordinateUseCase positionCoordinate;
-    @Mock private CoordinatesArrayUseCase coordinatesArray;
-    @Mock private CoordinatesComparatorUseCase coordinatesComparator;
-    @Mock private FlagSelectorUseCase flagsSelector;
-    @Mock private Bundle savedInstanceState;
-    @Mock private TranslationsContract.View view;
 
-    @Mock private List<String> characterList;
-    @Mock private List<WordLocation> locations;
+    @Mock
+    private Translation translation;
+    @Mock
+    private PositionCoordinateUseCase positionCoordinate;
+    @Mock
+    private CoordinatesArrayUseCase coordinatesArray;
+    @Mock
+    private CoordinatesComparatorUseCase coordinatesComparator;
+    @Mock
+    private FlagSelectorUseCase flagsSelector;
+    @Mock
+    private Bundle savedInstanceState;
+    @Mock
+    private TranslationsContract.View view;
+
+    @Mock
+    private List<String> characterList;
+    @Mock
+    private List<WordLocation> locations;
 
     private TranslationsPresenter presenter;
 
@@ -70,6 +75,7 @@ public class TranslationsPresenterTest {
         verify(view).stopListeningTouchEvents();
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void characterTouchedAndActionUp_setEmptySelectedItemList() {
         presenter.onCharacterTouched(POSITION, MotionEvent.ACTION_UP);
@@ -78,5 +84,5 @@ public class TranslationsPresenterTest {
         verify(view).setSelectedItems(listCaptor.capture());
         assertEquals(listCaptor.getValue().size(), 0);
     }
-    
+
 }

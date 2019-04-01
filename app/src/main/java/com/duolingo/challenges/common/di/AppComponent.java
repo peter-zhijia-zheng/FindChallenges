@@ -1,13 +1,13 @@
 package com.duolingo.challenges.common.di;
 
 
-/**
- * Application component refers to application level modules only.
+/*
+  Application component refers to application level modules only.
  */
 
 import android.app.Application;
 
-import com.duolingo.challenges.WordsApplication;
+import com.duolingo.challenges.ChallengesApplication;
 
 import dagger.BindsInstance;
 import dagger.Component;
@@ -21,6 +21,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         MainActivityViewsBuildersModule.class})
 public interface AppComponent {
 
+    void inject(ChallengesApplication application);
+
     @Component.Builder
     interface Builder {
 
@@ -29,6 +31,4 @@ public interface AppComponent {
 
         AppComponent build();
     }
-
-    void inject(WordsApplication application);
 }

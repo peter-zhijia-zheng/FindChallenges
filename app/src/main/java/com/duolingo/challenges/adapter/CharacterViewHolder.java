@@ -35,8 +35,8 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder
     private CharacterItemPresenter presenter;
 
     private View itemView;
-    private Integer gridSize;
-    private CharacterTextSizeUseCase characterTextSizeUseCase;
+    private final Integer gridSize;
+    private final CharacterTextSizeUseCase characterTextSizeUseCase;
 
     public CharacterViewHolder(
             View itemView,

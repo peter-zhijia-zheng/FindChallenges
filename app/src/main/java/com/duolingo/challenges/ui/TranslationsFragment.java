@@ -3,6 +3,8 @@ package com.duolingo.challenges.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,15 +41,6 @@ public class TranslationsFragment extends BaseFragment implements
     private static final float NO_TRANSLATION_Y = 0f;
     private static final float TRANSLATION_Y = 200f;
     private static final String KEY_TRANSLATION = "KEY_TRANSLATION";
-
-    public static Fragment newInstance(Translation translation) {
-        Bundle args = new Bundle();
-        args.putParcelable(KEY_TRANSLATION, translation);
-        TranslationsFragment fragment = new TranslationsFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Inject
     ScreenSizeUseCase screenSizeUseCase;
     @Inject
@@ -60,7 +53,6 @@ public class TranslationsFragment extends BaseFragment implements
     CoordinatesComparatorUseCase coordinateComparatorUseCase;
     @Inject
     FlagSelectorUseCase flagSelectorUseCase;
-
     @BindView(R.id.iv_source)
     ImageView ivSource;
     @BindView(R.id.tv_source_word)
@@ -73,19 +65,26 @@ public class TranslationsFragment extends BaseFragment implements
     TextView tvSolutionRatio;
     @BindView(R.id.btn_next)
     Button btnNext;
-
     private FragmentContainer container;
     private TranslationsPresenter presenter;
     private Translation translation;
     private CharactersAdapter charactersAdapter;
     private RecyclerTouchListener recyclerViewTouchListener;
-
-    private RecyclerTouchListener.ItemTouchListener itemTouchListener = new RecyclerTouchListener.ItemTouchListener() {
+    private final RecyclerTouchListener.ItemTouchListener itemTouchListener
+            = new RecyclerTouchListener.ItemTouchListener() {
         @Override
         public void onItemTouched(int position, int eventAction) {
             presenter.onCharacterTouched(position, eventAction);
         }
     };
+
+    public static Fragment newInstance(Translation translation) {
+        Bundle args = new Bundle();
+        args.putParcelable(KEY_TRANSLATION, translation);
+        TranslationsFragment fragment = new TranslationsFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -98,7 +97,10 @@ public class TranslationsFragment extends BaseFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        translation = getArguments().getParcelable(KEY_TRANSLATION);
+        Bundle arguments = getArguments();
+        if (arguments != null) {
+            translation = arguments.getParcelable(KEY_TRANSLATION);
+        }
 
         recyclerViewTouchListener = new RecyclerTouchListener(itemTouchListener);
 
@@ -116,11 +118,11 @@ public class TranslationsFragment extends BaseFragment implements
                 flagSelectorUseCase);
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_translations, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        @SuppressWarnings("Annotator") View view = inflater.inflate(R.layout.fragment_translations, container, false);
         bindView(this, view);
 
         tvSourceWord.setText(translation.word);
@@ -155,7 +157,7 @@ public class TranslationsFragment extends BaseFragment implements
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         presenter.onSavedInstanceState(outState);
     }

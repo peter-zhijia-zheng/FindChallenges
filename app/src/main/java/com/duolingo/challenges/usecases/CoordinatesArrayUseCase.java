@@ -5,7 +5,6 @@ import android.util.Log;
 import com.duolingo.challenges.data.models.WordCoordinate;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -20,7 +19,8 @@ public class CoordinatesArrayUseCase {
             WordCoordinate coordinateHead,
             WordCoordinate coordinateTail
     ) {
-        List<WordCoordinate> coordinateList = new ArrayList<>(Arrays.asList(coordinateHead));
+        List<WordCoordinate> coordinateList = new ArrayList<>();
+        coordinateList.add(coordinateHead);
         if (coordinateHead.x != coordinateTail.x) {
             return coordinateList;
         }
@@ -40,7 +40,8 @@ public class CoordinatesArrayUseCase {
             WordCoordinate coordinateHead,
             WordCoordinate coordinateTail
     ) {
-        List<WordCoordinate> coordinateList = new ArrayList<>(Arrays.asList(coordinateHead));
+        List<WordCoordinate> coordinateList = new ArrayList<>();
+        coordinateList.add(coordinateHead);
         if (coordinateHead.y != coordinateTail.y) {
             return coordinateList;
         }
@@ -61,7 +62,8 @@ public class CoordinatesArrayUseCase {
     ) {
         int offsetX = coordinateHead.x > coordinateTail.x ? -1 : 1;
         int offsetY = coordinateHead.y > coordinateTail.y ? -1 : 1;
-        List<WordCoordinate> coordinateList = new ArrayList<>(Arrays.asList(coordinateHead));
+        List<WordCoordinate> coordinateList = new ArrayList<>();
+        coordinateList.add(coordinateHead);
         int indexX = coordinateHead.x;
         int indexY = coordinateHead.y;
         do {

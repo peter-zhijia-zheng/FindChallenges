@@ -8,10 +8,9 @@ import java.util.List;
 
 public class CharacterItemPresenter extends ReactivePresenter implements CharacterItemContract.Presenter {
 
-    private CharacterItemContract.View view;
-
     private final int gridSize;
-    private CharacterTextSizeUseCase characterTextSizeUseCase;
+    private CharacterItemContract.View view;
+    private final CharacterTextSizeUseCase characterTextSizeUseCase;
 
     public CharacterItemPresenter(int gridSize, CharacterTextSizeUseCase characterTextSizeUseCase) {
         this.gridSize = gridSize;

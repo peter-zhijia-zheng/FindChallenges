@@ -5,12 +5,12 @@ import com.duolingo.challenges.contract.ResultContract;
 import javax.inject.Inject;
 
 public class ResultPresenter extends ReactivePresenter implements ResultContract.Presenter {
+    private ResultContract.View view;
+
     @Inject
     public ResultPresenter() {
         super();
     }
-
-    private ResultContract.View view;
 
     @Override
     public void setView(ResultContract.View view) {

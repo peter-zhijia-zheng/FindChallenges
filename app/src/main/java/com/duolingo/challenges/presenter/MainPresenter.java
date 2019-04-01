@@ -2,9 +2,9 @@ package com.duolingo.challenges.presenter;
 
 import android.os.Bundle;
 
-import com.duolingo.challenges.contract.MainContract;
 import com.duolingo.challenges.R;
 import com.duolingo.challenges.common.extention.AnimationType;
+import com.duolingo.challenges.contract.MainContract;
 import com.duolingo.challenges.data.local.TranslationsStore;
 import com.duolingo.challenges.data.models.Translation;
 
@@ -15,11 +15,9 @@ public class MainPresenter extends ReactivePresenter implements MainContract.Pre
     public static final int DEFAULT_PROGRESS_MAX_VALUE = 1;
     public static final int DEFAULT_PROGRESS_VALUE = 0;
     public static final int DEFAULT_INDEX = 0;
-
-    private TranslationsStore translationsStore;
-    private MainContract.View view;
-
     public int translationIndex = DEFAULT_INDEX;
+    private final TranslationsStore translationsStore;
+    private MainContract.View view;
 
     @Inject
     public MainPresenter(TranslationsStore translationsStore) {
@@ -38,7 +36,6 @@ public class MainPresenter extends ReactivePresenter implements MainContract.Pre
         if (savedInstanceState == null || !translationsStore.hasTranslations()) {
             view.updateProgress(DEFAULT_PROGRESS_MAX_VALUE, DEFAULT_PROGRESS_VALUE);
             view.showInstructions(AnimationType.NONE);
-            return;
         }
     }
 

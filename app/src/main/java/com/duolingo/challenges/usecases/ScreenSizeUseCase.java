@@ -18,11 +18,14 @@ public class ScreenSizeUseCase {
 
     public int getScreenWidth() {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        Display display = windowManager.getDefaultDisplay();
+        if (windowManager != null) {
+            Display display = windowManager.getDefaultDisplay();
 
-        Point size = new Point();
-        display.getSize(size);
-        return size.x;
+            Point size = new Point();
+            display.getSize(size);
+            return size.x;
+        }
+        return 0;
     }
 
 }

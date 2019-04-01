@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class TranslationsStore {
 
-    private ArrayList<Translation> translations = new ArrayList<>();
+    private final ArrayList<Translation> translations = new ArrayList<>();
 
     public void addTranslation(Translation translation) {
         translations.add(translation);

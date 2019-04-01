@@ -10,12 +10,7 @@ import io.reactivex.schedulers.Schedulers;
 public class SchedulerProviderTest implements SchedulerProvider {
     @Inject
     public SchedulerProviderTest() {
-        
-    }
 
-    @Override
-    public Scheduler computation() {
-        return Schedulers.trampoline();
     }
 
     @Override

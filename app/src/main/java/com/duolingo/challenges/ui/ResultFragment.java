@@ -2,6 +2,8 @@ package com.duolingo.challenges.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +21,13 @@ import butterknife.OnClick;
 public class ResultFragment extends BaseFragment implements
         ResultContract.View {
 
+    @Inject
+    ResultPresenter presenter;
+    private FragmentContainer container;
+
     public static Fragment newInstance() {
         return new ResultFragment();
     }
-
-    @Inject
-    ResultPresenter presenter;
-
-    private FragmentContainer container;
 
     @Override
     public void onAttach(Context context) {
@@ -35,11 +36,11 @@ public class ResultFragment extends BaseFragment implements
         container = (FragmentContainer) (parentFragment == null ? context : parentFragment);
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_result, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        @SuppressWarnings("Annotator") View view = inflater.inflate(R.layout.fragment_result, container, false);
         bindView(this, view);
 
         presenter.setView(this);

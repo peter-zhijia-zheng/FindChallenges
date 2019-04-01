@@ -1,6 +1,7 @@
 package com.duolingo.challenges.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +17,14 @@ import java.util.List;
 
 public class CharactersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
-    private Integer gridSize;
-    private ScreenSizeUseCase screenSizeUseCase;
-    private CharacterTextSizeUseCase characterTextUseCase;
+    private final Integer gridSize;
+    private final ScreenSizeUseCase screenSizeUseCase;
+    private final CharacterTextSizeUseCase characterTextUseCase;
 
     private LayoutInflater layoutInflater;
-    private List<String> characters = new ArrayList<>();
-    private List<Integer> selectedItems = new ArrayList<>();
-    private List<Integer> solutionItems = new ArrayList<>();
+    private final List<String> characters = new ArrayList<>();
+    private final List<Integer> selectedItems = new ArrayList<>();
+    private final List<Integer> solutionItems = new ArrayList<>();
     private int cellSize;
 
     public CharactersAdapter(
@@ -56,15 +57,16 @@ public class CharactersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return characters.size();
     }
 
+    @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.listitem_character, parent, false);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        @SuppressWarnings("Annotator") View view = layoutInflater.inflate(R.layout.listitem_character, parent, false);
         setViewLayoutParams(view);
         return new CharacterViewHolder(view, gridSize, characterTextUseCase);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         String character = characters.get(position);
         CharacterViewHolder characterViewHolder = (CharacterViewHolder) viewHolder;
         characterViewHolder.onBindViewHolder(
@@ -75,7 +77,7 @@ public class CharactersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     @Override
-    public void onViewRecycled(RecyclerView.ViewHolder holder) {
+    public void onViewRecycled(@NonNull RecyclerView.ViewHolder holder) {
         super.onViewRecycled(holder);
 
         if (holder instanceof CharacterViewHolder) {

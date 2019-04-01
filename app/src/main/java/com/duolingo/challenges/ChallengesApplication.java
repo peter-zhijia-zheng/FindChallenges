@@ -2,15 +2,19 @@ package com.duolingo.challenges;
 
 import android.app.Activity;
 import android.app.Application;
+
+import com.duolingo.challenges.common.di.DaggerAppComponent;
+
+import javax.inject.Inject;
+
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
-import javax.inject.Inject;
-import com.duolingo.challenges.common.di.DaggerAppComponent;
 
-public class WordsApplication extends Application implements HasActivityInjector {
+public class ChallengesApplication extends Application implements HasActivityInjector {
 
-    @Inject DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
+    @Inject
+    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
 
     @Override
     public void onCreate() {

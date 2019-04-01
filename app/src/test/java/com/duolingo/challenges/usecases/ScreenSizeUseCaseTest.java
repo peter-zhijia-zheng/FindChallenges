@@ -18,10 +18,13 @@ import static org.mockito.Mockito.when;
 public class ScreenSizeUseCaseTest {
     private static final int WIDTH = 100;
     private static final int HEIGHT = 150;
-            
-    @Mock private Context context;
-    @Mock private WindowManager windowManager;
-    @Mock private Display display;
+
+    @Mock
+    private Context context;
+    @Mock
+    private WindowManager windowManager;
+    @Mock
+    private Display display;
 
     private ScreenSizeUseCase useCase;
 

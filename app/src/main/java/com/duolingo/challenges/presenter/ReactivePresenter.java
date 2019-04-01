@@ -3,11 +3,11 @@ package com.duolingo.challenges.presenter;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-public abstract class ReactivePresenter {
+abstract class ReactivePresenter {
 
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-    protected void addDisposable(Disposable disposable) {
+    void addDisposable(Disposable disposable) {
         compositeDisposable.add(disposable);
     }
 

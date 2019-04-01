@@ -4,7 +4,6 @@ import com.duolingo.challenges.data.local.TranslationsStore;
 import com.duolingo.challenges.data.models.Translation;
 import com.duolingo.challenges.data.parsers.TranslationParser;
 import com.duolingo.challenges.data.remote.RemoteDataSource;
-import com.duolingo.challenges.usecases.FetchTranslationsUseCase;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,14 +25,19 @@ public class FetchTranslationsUseCaseTest {
     private static final String TRANSLATION_1 = "a";
     private static final String TRANSLATION_2 = "b";
     private static final String RESPONSE_STRING = TRANSLATION_1 + BREAK_LINE + TRANSLATION_2;
-            
+
     @Mock
     private RemoteDataSource remoteDataSource;
-    @Mock private TranslationsStore translationsStore;
-    @Mock private TranslationParser translationParser;
-    @Mock private ResponseBody responseBody;
-    @Mock private Translation translation;
-    @Mock private Throwable throwable;
+    @Mock
+    private TranslationsStore translationsStore;
+    @Mock
+    private TranslationParser translationParser;
+    @Mock
+    private ResponseBody responseBody;
+    @Mock
+    private Translation translation;
+    @Mock
+    private Throwable throwable;
 
     private FetchTranslationsUseCase useCase;
 

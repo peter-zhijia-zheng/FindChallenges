@@ -1,6 +1,7 @@
 package com.duolingo.challenges.common;
 
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,14 +10,14 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
     private static final int INVALID_POSITION = -1;
     private Rect rect;
     private int lastNotifiedPosition = -1;
-    private ItemTouchListener itemTouchListener;
+    private final ItemTouchListener itemTouchListener;
 
     public RecyclerTouchListener(ItemTouchListener itemTouchListener) {
         this.itemTouchListener = itemTouchListener;
     }
 
     @Override
-    public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent event) {
+    public boolean onInterceptTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent event) {
         View child = recyclerView.findChildViewUnder(event.getX(), event.getY());
         int action = event.getAction();
 
@@ -38,10 +39,12 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
             }
         }
 
-        int position = recyclerView.getChildAdapterPosition(child);
-        if (child != null && position != lastNotifiedPosition) {
-            lastNotifiedPosition = position;
-            notifyListener(lastNotifiedPosition, event.getAction());
+        if (child != null) {
+            int position = recyclerView.getChildAdapterPosition(child);
+            if (position != lastNotifiedPosition) {
+                lastNotifiedPosition = position;
+                notifyListener(lastNotifiedPosition, event.getAction());
+            }
         }
 
         if (action == MotionEvent.ACTION_UP) {
@@ -53,7 +56,7 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
     }
 
     @Override
-    public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+    public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
         // Don't do anything
     }
 

@@ -14,8 +14,10 @@ import static org.junit.Assert.assertTrue;
 
 public class TranslationStoreTest {
 
-    @Mock private Translation translation;
-    @Mock private Translation secondTranslation;
+    @Mock
+    private Translation translation;
+    @Mock
+    private Translation secondTranslation;
 
     private TranslationsStore store;
 

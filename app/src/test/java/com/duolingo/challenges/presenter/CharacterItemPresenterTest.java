@@ -2,8 +2,8 @@ package com.duolingo.challenges.presenter;
 
 import com.duolingo.challenges.R;
 import com.duolingo.challenges.contract.CharacterItemContract;
-import com.duolingo.challenges.presenter.CharacterItemPresenter;
 import com.duolingo.challenges.usecases.CharacterTextSizeUseCase;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,17 +21,13 @@ public class CharacterItemPresenterTest {
     private static final int TEXT_SIZE = 15;
     private static final String TEXT = "text";
     private static final int POSITION = 1;
-            
+    private final List<Integer> selectedItems = new ArrayList<>();
+    private final List<Integer> solutionItems = new ArrayList<>();
     @Mock
     private CharacterTextSizeUseCase characterTextSizeUseCase;
-    
     @Mock
     private CharacterItemContract.View view;
-
     private CharacterItemPresenter presenter;
-
-    private List<Integer> selectedItems = new ArrayList<>();
-    private List<Integer> solutionItems = new ArrayList<>();
 
     @Before
     public void setUp() {
