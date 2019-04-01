@@ -19,7 +19,6 @@ import static com.duolingo.challenges.presenter.MainPresenter.DEFAULT_PROGRESS_M
 import static com.duolingo.challenges.presenter.MainPresenter.DEFAULT_PROGRESS_VALUE;
 import static com.duolingo.challenges.presenter.MainPresenter.KEY_TRANSLATION_INDEX;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -48,13 +47,6 @@ public class MainPresenterTest {
     }
 
     @Test
-    public void startedWithNullBundleAndNoTranslations_updatesProgressWithDefault() {
-        presenter.start(null);
-
-        verify(view).updateProgress(DEFAULT_PROGRESS_MAX_VALUE, DEFAULT_PROGRESS_VALUE);
-    }
-
-    @Test
     public void startedWithNullBundleAndNoTranslations_showsInstructions() {
         presenter.start(null);
 
@@ -76,15 +68,6 @@ public class MainPresenterTest {
         presenter.onSavedInstanceState(savedInstanceState);
 
         verify(savedInstanceState).putInt(KEY_TRANSLATION_INDEX, presenter.translationIndex);
-    }
-
-    @Test
-    public void instructionsReady_showsCharacterGrid() {
-        when(translationsStore.fetchTranslationWithIndex(any())).thenReturn(translation);
-
-        presenter.onInstructionsReady();
-
-        verify(view).showTranslation(translation, AnimationType.SLIDE);
     }
 
     @Test

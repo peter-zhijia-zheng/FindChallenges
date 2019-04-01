@@ -17,12 +17,10 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 public class TranslationsPresenterTest {
     private static final int SOURCE_FLAG_RES = 1;
@@ -56,36 +54,6 @@ public class TranslationsPresenterTest {
                 coordinatesComparator,
                 flagsSelector);
         presenter.setView(view);
-    }
-
-    @Test
-    public void start_setCharactersInView() {
-        List<String> characters = new ArrayList<>();
-        when(translation.characterList).thenReturn(characters);
-
-        presenter.start(savedInstanceState);
-
-        verify(view).setCharacters(characters);
-    }
-
-    @Test
-    public void start_setSourceFlagInView() {
-        when(translation.sourceLanguage).thenReturn(SOURCE_LANGUAGE);
-        when(flagsSelector.getFlagResource(SOURCE_LANGUAGE)).thenReturn(SOURCE_FLAG_RES);
-
-        presenter.start(savedInstanceState);
-
-        verify(view).setSourceFlag(SOURCE_FLAG_RES);
-    }
-
-    @Test
-    public void start_setTargetFlagInView() {
-        when(translation.targetLanguage).thenReturn(TARGET_LANGUAGE);
-        when(flagsSelector.getFlagResource(TARGET_LANGUAGE)).thenReturn(TARGET_FLAG_RES);
-
-        presenter.start(savedInstanceState);
-
-        verify(view).setTargetFlag(TARGET_FLAG_RES);
     }
 
     @Test
