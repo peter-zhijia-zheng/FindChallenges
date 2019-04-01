@@ -39,7 +39,7 @@ public class ConnectionUseCaseTest {
     }
 
     @Test
-    public void deviceConnectedAndNetworkInfoNotConnected_returnFlase() {
+    public void deviceConnectedAndNetworkInfoNotConnected_returnFalse() {
         when(manager.getActiveNetworkInfo()).thenReturn(networkInfo);
         when(networkInfo.isConnectedOrConnecting()).thenReturn(false);
 

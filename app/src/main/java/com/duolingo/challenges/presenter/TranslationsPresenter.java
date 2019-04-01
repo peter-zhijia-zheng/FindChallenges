@@ -78,8 +78,6 @@ public class TranslationsPresenter extends ReactivePresenter implements Translat
 
     @Override
     public void onCharacterTouched(int position, int eventAction) {
-//        Log.d("zheng", "onCharacterTouched position:" + position + " pivotCharacterPosition:"
-//                + pivotCharacterPosition + " eventAction:" + eventAction);
         if (eventAction == MotionEvent.ACTION_UP) {
             verifySolutions();
             clearSelection();
@@ -94,12 +92,10 @@ public class TranslationsPresenter extends ReactivePresenter implements Translat
         if (eventAction == MotionEvent.ACTION_DOWN && isPositionInvalid()) {
             pivotCharacterPosition = position;
             pivotCoordinate = getCoordinatesFromPosition(position);
-//            Log.d("zheng", "onCharacterTouched pivotCharacterPosition:" + pivotCharacterPosition);
         }
 
         pivotCharacterPosition = getPositionFromCoordinates(pivotCoordinate);
         if (position == pivotCharacterPosition) {
-//            Log.d("zheng", "position == pivotCharacterPosition:" + pivotCharacterPosition);
             List<Integer> positions = new ArrayList<>();
             positions.add(pivotCharacterPosition);
             setSelectedItems(positions);
@@ -107,16 +103,12 @@ public class TranslationsPresenter extends ReactivePresenter implements Translat
         }
 
         if (position != -1) {
-//            Log.d("zheng", "calculateSelectedCharacters position:" + position + " pivotCharacterPosition:"
-//                    + pivotCharacterPosition + " eventAction:" + eventAction);
             WordCoordinate newCoordinate = getCoordinatesFromPosition(position);
             calculateSelectedCharacters(newCoordinate);
         }
     }
 
     private void calculateSelectedCharacters(WordCoordinate coordinate) {
-//        Log.d("zheng", "calculateSelectedCharacters coordinate:" + new Gson().toJson(coordinate)
-//                        + " pivotCoordinate:" + new Gson().toJson(pivotCoordinate));
         if (coordinatesComparator.isCoordinateOnSameRow(pivotCoordinate, coordinate)) {
             selectItemsInRow(coordinate);
             return;
