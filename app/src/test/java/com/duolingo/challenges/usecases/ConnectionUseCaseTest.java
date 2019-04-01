@@ -1,10 +1,8 @@
-package com.duolingo.challenges.common.usecases;
+package com.duolingo.challenges.usecases;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-
-import com.duolingo.challenges.usecases.ConnectionUseCase;
 
 import org.junit.Before;
 import org.junit.Test;

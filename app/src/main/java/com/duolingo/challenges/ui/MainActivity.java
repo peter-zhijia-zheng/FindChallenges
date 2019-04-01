@@ -13,7 +13,7 @@ import com.duolingo.challenges.common.extention.AnimationType;
 import com.duolingo.challenges.common.extention.FragmentManagerExtensions;
 import com.duolingo.challenges.contract.MainContract;
 import com.duolingo.challenges.data.models.Translation;
-import com.duolingo.challenges.presentation.MainPresenter;
+import com.duolingo.challenges.presenter.MainPresenter;
 import com.duolingo.challenges.ui.base.BaseActivity;
 
 import javax.inject.Inject;

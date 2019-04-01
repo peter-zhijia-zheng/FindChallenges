@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.duolingo.challenges.R;
 import com.duolingo.challenges.contract.CharacterItemContract;
-import com.duolingo.challenges.presentation.CharacterItemPresenter;
+import com.duolingo.challenges.presenter.CharacterItemPresenter;
 import com.duolingo.challenges.usecases.CharacterTextSizeUseCase;
 
 import java.util.List;

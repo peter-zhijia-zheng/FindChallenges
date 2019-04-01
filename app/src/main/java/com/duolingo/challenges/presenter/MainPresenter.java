@@ -1,4 +1,4 @@
-package com.duolingo.challenges.presentation;
+package com.duolingo.challenges.presenter;
 
 import android.os.Bundle;
 

@@ -5,7 +5,7 @@ import android.support.annotation.StringRes;
 
 import com.duolingo.challenges.common.extention.AnimationType;
 import com.duolingo.challenges.data.models.Translation;
-import com.duolingo.challenges.presentation.BasePresenter;
+import com.duolingo.challenges.presenter.BasePresenter;
 
 public interface MainContract {
 

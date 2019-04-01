@@ -1,13 +1,15 @@
-package com.duolingo.challenges.common.schedulers;
+package com.duolingo.challenges.common;
+
+import com.duolingo.challenges.common.schedulers.SchedulerProvider;
 
 import javax.inject.Inject;
 
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 
-public class TestSchedulerProvider implements SchedulerProvider {
+public class SchedulerProviderTest implements SchedulerProvider {
     @Inject
-    public TestSchedulerProvider() {
+    public SchedulerProviderTest() {
         
     }
 

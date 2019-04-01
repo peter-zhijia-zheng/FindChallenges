@@ -2,7 +2,7 @@ package com.duolingo.challenges.contract;
 
 import android.support.annotation.StringRes;
 
-import com.duolingo.challenges.presentation.BasePresenter;
+import com.duolingo.challenges.presenter.BasePresenter;
 
 public interface InstructionsContract {
 

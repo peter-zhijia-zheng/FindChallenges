@@ -1,5 +1,7 @@
 package com.duolingo.challenges.usecases;
 
+import android.util.Log;
+
 import com.duolingo.challenges.data.models.WordCoordinate;
 
 import java.util.ArrayList;
@@ -28,6 +30,8 @@ public class CoordinatesArrayUseCase {
         do {
             indexY += offset;
             coordinateList.add(new WordCoordinate(coordinateHead.x, indexY));
+            Log.d("zheng", "calculateCoordinatesOnSameRow indexY:" + indexY
+                    + " coordinateTail.y:" + coordinateTail.y + " thread:" + Thread.currentThread());
         } while (indexY != coordinateTail.y);
         return coordinateList;
     }
@@ -46,6 +50,7 @@ public class CoordinatesArrayUseCase {
         do {
             indexX += offset;
             coordinateList.add(new WordCoordinate(indexX, coordinateHead.y));
+            Log.d("zheng", "calculateCoordinatesOnSameColumn indexX:" + indexX + " coordinateTail.x:" + coordinateTail.x);
         } while (indexX != coordinateTail.x);
         return coordinateList;
     }
@@ -63,6 +68,8 @@ public class CoordinatesArrayUseCase {
             indexX += offsetX;
             indexY += offsetY;
             coordinateList.add(new WordCoordinate(indexX, indexY));
+            Log.d("zheng", "calculateCoordinatesDiagonally indexX:" + indexX + " coordinateTail.x:" + coordinateTail.x
+                    + " indexY:" + indexY + " coordinateTail.y:" + coordinateTail.y);
         } while (indexX != coordinateTail.x && indexY != coordinateTail.y);
         return coordinateList;
     }

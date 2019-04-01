@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.duolingo.challenges.R;
 import com.duolingo.challenges.contract.ResultContract;
-import com.duolingo.challenges.presentation.ResultPresenter;
+import com.duolingo.challenges.presenter.ResultPresenter;
 import com.duolingo.challenges.ui.base.BaseFragment;
 
 import javax.inject.Inject;

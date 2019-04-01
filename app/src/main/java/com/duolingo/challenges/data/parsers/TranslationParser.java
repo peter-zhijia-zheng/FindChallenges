@@ -1,6 +1,6 @@
 package com.duolingo.challenges.data.parsers;
 
-import com.duolingo.challenges.data.models.Puzzle;
+import com.duolingo.challenges.data.models.Challenge;
 import com.duolingo.challenges.data.models.Translation;
 import com.duolingo.challenges.data.models.WordCoordinate;
 import com.duolingo.challenges.data.models.WordLocation;
@@ -14,11 +14,6 @@ import javax.inject.Inject;
 
 public class TranslationParser {
     private static final String COMMA = ",";
-    private static final String SOURCE_LANGUAGE = "source_language";
-    private static final String TARGET_LANGUAGE = "target_language";
-    private static final String WORD = "word";
-    private static final String CHARACTER_GRID = "character_grid";
-    private static final String WORD_LOCATIONS = "word_locations";
 
     @Inject
     public TranslationParser() {
@@ -26,16 +21,16 @@ public class TranslationParser {
     }
 
     public Translation parseTranslation(String translationString) {
-        Puzzle puzzle = new Gson().fromJson(translationString, Puzzle.class);
-        int gridSize = puzzle.character_grid.size();
-        List<String> characters = createCharacterList(puzzle.character_grid, gridSize);
+        Challenge challenge = new Gson().fromJson(translationString, Challenge.class);
+        int gridSize = challenge.character_grid.size();
+        List<String> characters = createCharacterList(challenge.character_grid, gridSize);
 
-        List<WordLocation> locations = createLocationList(puzzle.word_locations);
+        List<WordLocation> locations = createLocationList(challenge.word_locations);
 
         return new Translation(
-                puzzle.source_language,
-                puzzle.target_language,
-                puzzle.word,
+                challenge.source_language,
+                challenge.target_language,
+                challenge.word,
                 gridSize,
                 characters,
                 locations);

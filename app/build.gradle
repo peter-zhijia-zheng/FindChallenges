@@ -52,20 +52,14 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
     compileOnly "org.glassfish:javax.annotation:$glassfishAnnotationVersion"
 
-    // Misc
-    // Make it easier to remove intrinsic paddings of the stock material design horizontal progress bar
     implementation "me.zhanghai.android.materialprogressbar:library:${materialProgressVersion}"
 
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.assertj:assertj-core:$assertjVersion"
-//    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
     testImplementation "org.hamcrest:hamcrest-core:$hamcrestVersion"
     testImplementation "org.hamcrest:hamcrest-library:$hamcrestVersion"
     testImplementation "org.hamcrest:hamcrest-integration:$hamcrestVersion"
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     testImplementation "org.mockito:mockito-inline:$mockitoVersion"
-//    testImplementation dependencies.create("com.nhaarman:mockito-kotlin:$mockitoKotlinVersion") {
-//        exclude group: 'org.jetbrains.kotlin'
-//    }
 }

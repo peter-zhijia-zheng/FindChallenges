@@ -28,7 +28,7 @@ public class PositionCoordinateUseCase  {
         return positions;
     }
 
-    private int positionFromCoordinate(int gridSize, WordCoordinate coordinate) {
+    public int positionFromCoordinate(int gridSize, WordCoordinate coordinate) {
         return (coordinate.x * gridSize) + coordinate.y;
     }
 }

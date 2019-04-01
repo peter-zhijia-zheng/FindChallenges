@@ -1,8 +1,8 @@
-package com.duolingo.challenges.home.result.presentation;
+package com.duolingo.challenges.presenter;
 
 
 import com.duolingo.challenges.contract.ResultContract;
-import com.duolingo.challenges.presentation.ResultPresenter;
+import com.duolingo.challenges.presenter.ResultPresenter;
 
 import org.junit.Before;
 import org.junit.Test;

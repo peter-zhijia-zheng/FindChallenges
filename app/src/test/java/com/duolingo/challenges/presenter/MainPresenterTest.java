@@ -1,4 +1,4 @@
-package com.duolingo.challenges.home.presentation;
+package com.duolingo.challenges.presenter;
 
 
 import android.os.Bundle;
@@ -8,17 +8,16 @@ import com.duolingo.challenges.common.extention.AnimationType;
 import com.duolingo.challenges.contract.MainContract;
 import com.duolingo.challenges.data.local.TranslationsStore;
 import com.duolingo.challenges.data.models.Translation;
-import com.duolingo.challenges.presentation.MainPresenter;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static com.duolingo.challenges.presentation.MainPresenter.DEFAULT_INDEX;
-import static com.duolingo.challenges.presentation.MainPresenter.DEFAULT_PROGRESS_MAX_VALUE;
-import static com.duolingo.challenges.presentation.MainPresenter.DEFAULT_PROGRESS_VALUE;
-import static com.duolingo.challenges.presentation.MainPresenter.KEY_TRANSLATION_INDEX;
+import static com.duolingo.challenges.presenter.MainPresenter.DEFAULT_INDEX;
+import static com.duolingo.challenges.presenter.MainPresenter.DEFAULT_PROGRESS_MAX_VALUE;
+import static com.duolingo.challenges.presenter.MainPresenter.DEFAULT_PROGRESS_VALUE;
+import static com.duolingo.challenges.presenter.MainPresenter.KEY_TRANSLATION_INDEX;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;

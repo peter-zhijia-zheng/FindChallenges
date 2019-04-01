@@ -3,7 +3,7 @@ package com.duolingo.challenges.data.models;
 import java.util.HashMap;
 import java.util.List;
 
-public class Puzzle {
+public class Challenge {
     public String source_language;
     public String word;
     public HashMap<String, String> word_locations;

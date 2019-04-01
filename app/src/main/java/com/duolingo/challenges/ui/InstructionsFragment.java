@@ -11,7 +11,7 @@ import android.widget.Button;
 
 import com.duolingo.challenges.R;
 import com.duolingo.challenges.contract.InstructionsContract;
-import com.duolingo.challenges.presentation.InstructionsPresenter;
+import com.duolingo.challenges.presenter.InstructionsPresenter;
 import com.duolingo.challenges.ui.base.BaseFragment;
 
 import javax.inject.Inject;

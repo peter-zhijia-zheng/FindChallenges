@@ -1,4 +1,4 @@
-package com.duolingo.challenges.home.instructions.usecases;
+package com.duolingo.challenges.usecases;
 
 import com.duolingo.challenges.data.local.TranslationsStore;
 import com.duolingo.challenges.data.models.Translation;

@@ -1,11 +1,9 @@
-package com.duolingo.challenges.common.usecases;
+package com.duolingo.challenges.usecases;
 
 import android.content.Context;
 import android.graphics.Point;
 import android.view.Display;
 import android.view.WindowManager;
-
-import com.duolingo.challenges.usecases.ScreenSizeUseCase;
 
 import org.junit.Before;
 import org.junit.Test;

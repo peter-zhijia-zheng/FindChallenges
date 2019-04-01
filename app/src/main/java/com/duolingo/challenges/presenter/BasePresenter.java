@@ -1,4 +1,4 @@
-package com.duolingo.challenges.presentation;
+package com.duolingo.challenges.presenter;
 
 public interface BasePresenter<V> {
 

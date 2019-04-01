@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -6,8 +6,42 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
+        <item name="android:orientation">vertical</item>
         <item name="colorButtonNormal">@color/colorAccent</item>
     </style>
 
+    <style name="FlatActionButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/flat_btn_bg_color_selector</item>
+        <item name="android:paddingBottom">@dimen/one_and_half_grid_unit</item>
+        <item name="android:paddingTop">@dimen/one_and_half_grid_unit</item>
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
+        <item name="android:textColor">@drawable/flat_btn_text_color_selector</item>
+    </style>
+
+    <!-- Title -->
+    <style name="TitleTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">@dimen/two_and_half_text_unit</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_marginTop">@dimen/two_grid_unit</item>
+        <item name="android:layout_marginBottom">@dimen/two_grid_unit</item>
+    </style>
+
+    <!-- Description -->
+    <style name="DescriptionTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/two_grid_unit</item>
+        <item name="android:layout_marginRight">@dimen/two_grid_unit</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="DescriptionBoldTextStyle" parent="DescriptionTextStyle">
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

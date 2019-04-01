@@ -18,7 +18,7 @@ import com.duolingo.challenges.adapter.CharactersAdapter;
 import com.duolingo.challenges.common.RecyclerTouchListener;
 import com.duolingo.challenges.contract.TranslationsContract;
 import com.duolingo.challenges.data.models.Translation;
-import com.duolingo.challenges.presentation.TranslationsPresenter;
+import com.duolingo.challenges.presenter.TranslationsPresenter;
 import com.duolingo.challenges.ui.base.BaseFragment;
 import com.duolingo.challenges.usecases.CharacterTextSizeUseCase;
 import com.duolingo.challenges.usecases.CoordinatesArrayUseCase;

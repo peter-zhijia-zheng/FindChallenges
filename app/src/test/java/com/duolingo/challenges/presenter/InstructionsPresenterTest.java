@@ -1,10 +1,9 @@
-package com.duolingo.challenges.home.instructions.presentation;
+package com.duolingo.challenges.presenter;
 
 import com.duolingo.challenges.R;
-import com.duolingo.challenges.common.schedulers.TestSchedulerProvider;
+import com.duolingo.challenges.common.SchedulerProviderTest;
 import com.duolingo.challenges.contract.InstructionsContract;
 import com.duolingo.challenges.data.local.TranslationsStore;
-import com.duolingo.challenges.presentation.InstructionsPresenter;
 import com.duolingo.challenges.usecases.ConnectionUseCase;
 import com.duolingo.challenges.usecases.FetchTranslationsUseCase;
 
@@ -26,13 +25,13 @@ public class InstructionsPresenterTest {
     @Mock private ConnectionUseCase connectionUseCase;
     @Mock private InstructionsContract.View view;
 
-    private TestSchedulerProvider schedulerProvider;
+    private SchedulerProviderTest schedulerProvider;
     private InstructionsPresenter presenter;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        schedulerProvider = new TestSchedulerProvider();
+        schedulerProvider = new SchedulerProviderTest();
         presenter = new InstructionsPresenter(
                 translationsStore,
                 fetchTranslationsUseCase,

@@ -10,7 +10,6 @@ import dagger.Provides;
 
 /* Module that contains specific dependencies for the Main Activity. */
 @Module
-@ActivityScope
 public class MainActivityModule {
 
     @Provides
