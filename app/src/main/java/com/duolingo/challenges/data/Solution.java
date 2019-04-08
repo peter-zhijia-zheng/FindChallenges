@@ -4,6 +4,7 @@ package com.duolingo.challenges.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Solution implements Parcelable {
@@ -18,7 +19,7 @@ public class Solution implements Parcelable {
             return new Solution[size];
         }
     };
-    public List<Integer> positions;
+    public List<Integer> positions = new ArrayList<>();
 
     public Solution(List<Integer> positions) {
         this.positions = positions;

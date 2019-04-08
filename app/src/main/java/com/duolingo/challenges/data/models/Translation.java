@@ -23,7 +23,7 @@ public class Translation implements Parcelable {
     public final String word;
     public final int gridSize;
     public List<String> characterList;
-    public List<WordLocation> locations;
+    public List<WordLocation> locations = new ArrayList<>();
 
     public Translation(
             String sourceLanguage,

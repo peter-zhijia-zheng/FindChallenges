@@ -3,6 +3,7 @@ package com.duolingo.challenges.data.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WordLocation implements Parcelable {
@@ -17,7 +18,7 @@ public class WordLocation implements Parcelable {
             return new WordLocation[size];
         }
     };
-    public List<WordCoordinate> coordinates;
+    public List<WordCoordinate> coordinates = new ArrayList<>();
     public final String word;
 
     public WordLocation(List<WordCoordinate> coordinates, String word) {
